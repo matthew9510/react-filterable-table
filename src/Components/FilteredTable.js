@@ -21,7 +21,7 @@ export default function FilteredTable({ products }) {
     <table style={{ width: "100%", paddingTop: 10 }}>
       <thead>
         <tr className="center-content">
-          <th style={{ marginRight: 30 }}>Name</th>
+          <th>Name</th>
           <th>Price</th>
         </tr>
       </thead>
