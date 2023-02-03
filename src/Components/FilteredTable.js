@@ -1,11 +1,25 @@
 import TableHeadingRow from "./TableHeadingRow.js";
 import TableDataRow from "./TableDataRow.js";
 
-export default function FilteredTable({ products }) {
+export default function FilteredTable({
+  products,
+  isInStockOnly,
+  tableSearchTerm,
+}) {
   const rows = [];
   let category = "";
 
   products.forEach((product) => {
+    if (
+      product.name.toLowerCase().indexOf(tableSearchTerm.toLowerCase()) === -1
+    ) {
+      return;
+    }
+
+    if (isInStockOnly && !product.stocked) {
+      return;
+    }
+
     if (category !== product.category) {
       rows.push(
         <TableHeadingRow key={product.category} category={product.category} />
